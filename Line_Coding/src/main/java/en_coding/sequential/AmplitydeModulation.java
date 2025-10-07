@@ -5,6 +5,7 @@
 package en_coding.sequential;
 
 import model.SignalDisplayData;
+import model.SignalType;
 
 /**
  *
@@ -18,7 +19,12 @@ public class AmplitydeModulation implements SequentialSignalEncoder{
     }
 
     @Override
-    public String getType() {
+    public String getEncodingName() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public SignalType getType() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -26,5 +32,6 @@ public class AmplitydeModulation implements SequentialSignalEncoder{
     public SignalDisplayData displayData(boolean[] bin) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
     
 }

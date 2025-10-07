@@ -5,20 +5,26 @@
 package en_coding.digital;
 
 import model.SignalDisplayData;
+import model.SignalType;
 
 /**
  *
  * @author adkm2
  */
 public class ManchesterEncoder implements DigitalSignalEncoder{    
-    
+
     @Override
     public boolean[] textToBin(String text) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public String getType() {
+    public String getEncodingName() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public SignalType getType() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -27,4 +33,5 @@ public class ManchesterEncoder implements DigitalSignalEncoder{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+
 }
