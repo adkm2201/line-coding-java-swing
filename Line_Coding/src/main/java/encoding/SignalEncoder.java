@@ -13,6 +13,18 @@ import java.nio.charset.StandardCharsets;
  * @author adkm2
  */
 public class  SignalEncoder {
+    private String text;
+    private Charset cs;
+    private byte[] bytes;
+    private List<Boolean> bits;
+
+    public SignalModel(String text, Charset cs) {
+        this.text = text;
+        this.cs = cs;
+        bytes = this.text.getBytes(cs);
+        bits = new ArrayList<>(bytes.length * 8);
+    }
+    
     public List textToBin (String text) {
         
         Charset cs = StandardCharsets.US_ASCII;

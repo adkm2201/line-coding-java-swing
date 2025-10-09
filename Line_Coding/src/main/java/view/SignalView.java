@@ -13,19 +13,21 @@ import model.SignalModel;
  * @author adkm2
  */
 public class SignalView {
-    private SignalController controller;
-    private SignalModel signal;
+    private SignalController controller = new SignalController();
     
-    public void displayBits (List<Boolean> bits) {
+    public String displayBits (String text) {
         int count = 0;
+        List<Boolean> bits = controller.signalEncoder(text);
+        StringBuilder sb = new StringBuilder();
         for (Boolean bit : bits) {
-            System.out.print(bit ? 1 : 0);
+            sb.append(bit ? '1' : '0');
             count++;
             if (count % 8 == 0) {
-                System.out.printf(" ");              
+                sb.append(' ');              
                 count = 0;
             }
         }
+        return sb.toString();
     }
     
     public void displayText (String text) {

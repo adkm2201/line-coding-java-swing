@@ -5,13 +5,14 @@
 package view;
 
 import controller.SignalController;
+import java.awt.Graphics;
 
 /**
  *
  * @author adkm2
  */
 public class InputForm extends javax.swing.JFrame {
-    private SignalController controller;
+    private SignalController controller = new SignalController();
     /**
      * Creates new form InputForm
      */
@@ -36,21 +37,36 @@ public class InputForm extends javax.swing.JFrame {
         inputText = new java.awt.TextField();
         manchesterBtn = new javax.swing.JButton();
         nrzBtn1 = new javax.swing.JButton();
+        digitalLabel = new java.awt.Label();
+        modulationLabel = new java.awt.Label();
+        FrequencyBtn = new javax.swing.JButton();
+        AmplitudeBtn = new javax.swing.JButton();
+        PhaseBtn = new javax.swing.JButton();
+        button1 = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         inputLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        inputLabel.setText("Enter the text you want to line coding:");
+        inputLabel.setText("Enter text (ASCII):");
 
-        titleLabel.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        titleLabel.setForeground(new java.awt.Color(255, 255, 255));
+        titleLabel.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         titleLabel.setName("LINE CODING"); // NOI18N
         titleLabel.setText("LINE CODING");
 
         inputText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inputText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputTextActionPerformed(evt);
+            }
+        });
 
         manchesterBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         manchesterBtn.setText("Manchester");
+        manchesterBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manchesterBtnActionPerformed(evt);
+            }
+        });
 
         nrzBtn1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         nrzBtn1.setText("NRZ");
@@ -60,44 +76,109 @@ public class InputForm extends javax.swing.JFrame {
             }
         });
 
+        digitalLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        digitalLabel.setForeground(new java.awt.Color(102, 102, 102));
+        digitalLabel.setName(""); // NOI18N
+        digitalLabel.setText("Digital Signal:");
+
+        modulationLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        modulationLabel.setForeground(new java.awt.Color(102, 102, 102));
+        modulationLabel.setText("Modulation:");
+
+        FrequencyBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        FrequencyBtn.setText("Frequency");
+        FrequencyBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FrequencyBtnActionPerformed(evt);
+            }
+        });
+
+        AmplitudeBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        AmplitudeBtn.setText("Amplitude");
+        AmplitudeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AmplitudeBtnActionPerformed(evt);
+            }
+        });
+
+        PhaseBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        PhaseBtn.setText("Phase");
+        PhaseBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PhaseBtnActionPerformed(evt);
+            }
+        });
+
+        button1.setLabel("See Binary");
+        button1.setName("See Binary"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputLabel)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PhaseBtn)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(AmplitudeBtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(FrequencyBtn))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(inputLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(modulationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(inputText, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nrzBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(digitalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(inputText, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(nrzBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(130, 130, 130)
-                        .addComponent(manchesterBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(manchesterBtn)
+                                .addGap(0, 133, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(inputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(inputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputText, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nrzBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(manchesterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(80, 80, 80))))
+                .addComponent(inputText, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(digitalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nrzBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manchesterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(modulationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FrequencyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AmplitudeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PhaseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -105,20 +186,55 @@ public class InputForm extends javax.swing.JFrame {
 
     private void nrzBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nrzBtn1ActionPerformed
         // TODO add your handling code here:
-        controller = new SignalController();
         String text = inputText.getText();
         controller.displayBits(controller.signalEncoder(text));
         
+
+        controller.showNRZ(controller.signalEncoder(text));
     }//GEN-LAST:event_nrzBtn1ActionPerformed
+
+    private void manchesterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manchesterBtnActionPerformed
+        // TODO add your handling code here:
+        String text = inputText.getText();
+        controller.showManchester(controller.signalEncoder(text));
+    }//GEN-LAST:event_manchesterBtnActionPerformed
+
+    private void FrequencyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FrequencyBtnActionPerformed
+        // TODO add your handling code here:
+        String text = inputText.getText();
+        controller.showFrequency(controller.signalEncoder(text));
+    }//GEN-LAST:event_FrequencyBtnActionPerformed
+
+    private void AmplitudeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AmplitudeBtnActionPerformed
+        // TODO add your handling code here:
+        String text = inputText.getText();
+        controller.showAmplitude(controller.signalEncoder(text));
+    }//GEN-LAST:event_AmplitudeBtnActionPerformed
+
+    private void PhaseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhaseBtnActionPerformed
+        // TODO add your handling code here:
+        String text = inputText.getText();
+        controller.showPhase(controller.signalEncoder(text));
+    }//GEN-LAST:event_PhaseBtnActionPerformed
+
+    private void inputTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputTextActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AmplitudeBtn;
+    private javax.swing.JButton FrequencyBtn;
+    private javax.swing.JButton PhaseBtn;
+    private java.awt.Button button1;
+    private java.awt.Label digitalLabel;
     private javax.swing.JLabel inputLabel;
     private java.awt.TextField inputText;
     private javax.swing.JButton manchesterBtn;
+    private java.awt.Label modulationLabel;
     private javax.swing.JButton nrzBtn1;
     private java.awt.Label titleLabel;
     // End of variables declaration//GEN-END:variables
