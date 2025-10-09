@@ -6,6 +6,11 @@ package view;
 
 import controller.SignalController;
 import java.awt.Graphics;
+import javax.swing.JTextArea;
+import java.awt.Dimension;
+import java.awt.Font;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -42,7 +47,7 @@ public class InputForm extends javax.swing.JFrame {
         FrequencyBtn = new javax.swing.JButton();
         AmplitudeBtn = new javax.swing.JButton();
         PhaseBtn = new javax.swing.JButton();
-        button1 = new java.awt.Button();
+        seeBinBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,13 +114,31 @@ public class InputForm extends javax.swing.JFrame {
             }
         });
 
-        button1.setLabel("See Binary");
-        button1.setName("See Binary"); // NOI18N
+        seeBinBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        seeBinBtn.setText("See Binary");
+        seeBinBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seeBinBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nrzBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(digitalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(manchesterBtn)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(seeBinBtn))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -137,21 +160,8 @@ public class InputForm extends javax.swing.JFrame {
                         .addComponent(inputText, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nrzBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(digitalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(manchesterBtn)
-                                .addGap(0, 133, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,11 +171,14 @@ public class InputForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(inputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputText, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(digitalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(inputText, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addGap(14, 14, 14)
+                        .addComponent(digitalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(seeBinBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nrzBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,7 +191,7 @@ public class InputForm extends javax.swing.JFrame {
                     .addComponent(AmplitudeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PhaseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -187,9 +200,6 @@ public class InputForm extends javax.swing.JFrame {
     private void nrzBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nrzBtn1ActionPerformed
         // TODO add your handling code here:
         String text = inputText.getText();
-        controller.displayBits(controller.signalEncoder(text));
-        
-
         controller.showNRZ(controller.signalEncoder(text));
     }//GEN-LAST:event_nrzBtn1ActionPerformed
 
@@ -221,6 +231,21 @@ public class InputForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputTextActionPerformed
 
+    private void seeBinBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeBinBtnActionPerformed
+        String text = inputText.getText();
+        
+        JTextArea ta = new JTextArea(controller.stringBits(text));
+        ta.setEditable(false);
+        ta.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
+        ta.setLineWrap(true);
+        ta.setWrapStyleWord(true);
+        
+        JScrollPane sc = new JScrollPane(ta, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        sc.setPreferredSize(new Dimension(450, 350));
+        
+        JOptionPane.showMessageDialog(this, sc, "Binary of the text", JOptionPane.PLAIN_MESSAGE);
+    }//GEN-LAST:event_seeBinBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -229,13 +254,13 @@ public class InputForm extends javax.swing.JFrame {
     private javax.swing.JButton AmplitudeBtn;
     private javax.swing.JButton FrequencyBtn;
     private javax.swing.JButton PhaseBtn;
-    private java.awt.Button button1;
     private java.awt.Label digitalLabel;
     private javax.swing.JLabel inputLabel;
     private java.awt.TextField inputText;
     private javax.swing.JButton manchesterBtn;
     private java.awt.Label modulationLabel;
     private javax.swing.JButton nrzBtn1;
+    private javax.swing.JButton seeBinBtn;
     private java.awt.Label titleLabel;
     // End of variables declaration//GEN-END:variables
 }

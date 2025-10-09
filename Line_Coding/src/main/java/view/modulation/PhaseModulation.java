@@ -30,19 +30,16 @@ public class PhaseModulation extends Waveform{
         int height = getHeight();
         int centerY = height / 2;
         int totalWidth = (bits != null) ? bits.size() * pixelsPerBit : getWidth();
-        
-        // Draw zero line (center)
+
         g2d.setColor(Color.DARK_GRAY);
         g2d.setStroke(new BasicStroke(2.5f));
         g2d.drawLine(0, centerY, totalWidth, centerY);
-        
-        // Draw amplitude guide lines
+
         g2d.setColor(Color.LIGHT_GRAY);
         g2d.setStroke(new BasicStroke(0.5f));
         g2d.drawLine(0, centerY - amplitude, totalWidth, centerY - amplitude); // +max
         g2d.drawLine(0, centerY + amplitude, totalWidth, centerY + amplitude); // -max
         
-        // Vertical grid lines for each bit
         for (int i = 0; i <= (bits != null ? bits.size() : 0); i++) {
             int x = i * pixelsPerBit;
             g2d.drawLine(x, 0, x, height);
@@ -62,7 +59,7 @@ public class PhaseModulation extends Waveform{
         
         for (int bitIndex = 0; bitIndex < bits.size(); bitIndex++) {
             boolean bit = bits.get(bitIndex);
-            double phaseShift = bit ? Math.PI : 0; // 180° phase shift cho bit 1
+            double phaseShift = bit ? Math.PI : 0;
             
             Point2D.Double prevPoint = null;
             

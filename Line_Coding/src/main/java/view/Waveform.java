@@ -4,7 +4,6 @@
  */
 package view;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -23,7 +22,7 @@ public abstract class Waveform extends javax.swing.JPanel {
     public List<Boolean> bits;
     public int amplitude = 50;
     // width in pixels allocated per bit; increase to spread bits out
-    protected int pixelsPerBit = 40;
+    protected int pixelsPerBit = 60;
     /**
      * Creates new form WaveformAbstract
      */
@@ -37,7 +36,6 @@ public abstract class Waveform extends javax.swing.JPanel {
         setPreferredSize(new Dimension(prefWidth, 300));
         setBackground(Color.WHITE);
         this.bits = bits;      
-
     }
     
 
@@ -109,7 +107,6 @@ public abstract class Waveform extends javax.swing.JPanel {
     protected double getBitWidth() {
         return (double) pixelsPerBit;
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

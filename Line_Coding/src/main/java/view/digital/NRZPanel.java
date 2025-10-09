@@ -25,8 +25,6 @@ public class NRZPanel extends Waveform {
         initComponents();        
     }
     
-    
-    
     @Override
     public void drawGrid(Graphics2D g2d) {
         

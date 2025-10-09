@@ -4,13 +4,9 @@
  */
 package controller;
 
-import encoding.SignalEncoder;
-import java.awt.Graphics;
 import java.util.List;
-import java.util.concurrent.Phaser;
 import model.SignalModel;
 import view.modulation.AmplitudeModulation;
-import view.modulation.FrequencyModulation;
 import view.InputForm;
 import view.digital.ManchesterPanel;
 import view.digital.NRZPanel;
@@ -18,13 +14,17 @@ import view.modulation.FrequencyModulation;
 import view.modulation.PhaseModulation;
 import view.SignalView;
 import view.Waveform;
+import javax.swing.JFrame;       
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
 
 /**
  *
  * @author adkm2
  */
 public class SignalController {
-    private SignalEncoder encoder;  
+    private SignalModel encoder;  
     private SignalModel signal;
     private InputForm inputForm;
     private SignalView signalView;
@@ -36,21 +36,21 @@ public class SignalController {
     private PhaseModulation phase;
     
     
-    public List signalEncoder (String text) {
-        encoder = new SignalEncoder();
+    public List<Boolean> signalEncoder (String text) {
+        encoder = new SignalModel();
         return encoder.textToBin(text);   
     }
     
-    public String displayBits (String text) {
+    public String stringBits (String text) {
         signalView = new SignalView();
-        return signalView.displayBits(text);
+        return signalView.stringBits(text);
     }
     
     public void loadInputForm () {
         inputForm = new InputForm();
         inputForm.setVisible(true);
     }
-    
+
     public void showNRZ (List<Boolean> bits) {
         nrz = new NRZPanel(bits);
         JFrame frame = new JFrame("NRZ Signal");
@@ -73,6 +73,7 @@ public class SignalController {
         javax.swing.JScrollPane scroll = new javax.swing.JScrollPane(manchester,
                 javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
                 javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scroll.setAutoscrolls(true);
         frame.getContentPane().add(scroll);
         frame.setSize(900, 400);
         frame.setLocationRelativeTo(null);

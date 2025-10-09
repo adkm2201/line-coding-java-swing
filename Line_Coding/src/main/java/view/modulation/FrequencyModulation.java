@@ -16,9 +16,9 @@ import view.Waveform;
  */
 public class FrequencyModulation extends Waveform {
 
-    private double lowFreq = 1.0;          // Tần số thấp cho bit 0
-    private double highFreq = 2.0;         // Tần số cao cho bit 1
-    private int samplesPerBit = 50;        // Số điểm lấy mẫu cho mỗi bit
+    private double lowFreq = 1.0;
+    private double highFreq = 2.0;
+    private int samplesPerBit = 50;
     
     /**
      * Creates new form PhaseModulation
@@ -34,18 +34,15 @@ public class FrequencyModulation extends Waveform {
         int centerY = height / 2;
         int totalWidth = (bits != null) ? bits.size() * pixelsPerBit : getWidth();
         
-        // Draw zero line (center)
         g2d.setColor(Color.DARK_GRAY);
         g2d.setStroke(new BasicStroke(2.5f));
         g2d.drawLine(0, centerY, totalWidth, centerY);
         
-        // Draw amplitude guide lines
         g2d.setColor(Color.LIGHT_GRAY);
         g2d.setStroke(new BasicStroke(0.5f));
         g2d.drawLine(0, centerY - amplitude, totalWidth, centerY - amplitude); // +max
         g2d.drawLine(0, centerY + amplitude, totalWidth, centerY + amplitude); // -max
-        
-        // Vertical grid lines for each bit
+
         for (int i = 0; i <= (bits != null ? bits.size() : 0); i++) {
             int x = i * pixelsPerBit;
             g2d.drawLine(x, 0, x, height);

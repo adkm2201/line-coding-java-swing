@@ -15,7 +15,7 @@ import model.SignalModel;
 public class SignalView {
     private SignalController controller = new SignalController();
     
-    public String displayBits (String text) {
+    public String stringBits (String text) {
         int count = 0;
         List<Boolean> bits = controller.signalEncoder(text);
         StringBuilder sb = new StringBuilder();
@@ -28,9 +28,5 @@ public class SignalView {
             }
         }
         return sb.toString();
-    }
-    
-    public void displayText (String text) {
-        System.out.println(text);
     }
 }

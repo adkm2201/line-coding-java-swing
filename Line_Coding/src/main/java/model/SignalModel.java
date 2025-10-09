@@ -4,25 +4,33 @@
  */
 package model;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 /**
  *
  * @author adkm2
  */
-public class SignalModel {
+public class  SignalModel {
     private String text;
-    private Charset cs;
-    private byte[] bytes;
     private List<Boolean> bits;
 
-    public SignalModel(String text, Charset cs) {
-        this.text = text;
-        this.cs = cs;
-        bytes = this.text.getBytes(cs);
-        bits = new ArrayList<>(bytes.length * 8);
-    }  
+    public SignalModel() {
+    }
     
+    public List<Boolean> textToBin (String text) {
+        
+        Charset cs = StandardCharsets.US_ASCII;
+        byte[] bytes = text.getBytes(cs);
+        List<Boolean> bits = new ArrayList<>(bytes.length*8);
+        
+        for (byte b : bytes) {
+            for (int i = 7; i >=0; i--) {
+                bits.add(((b >> i) & 1) == 1);
+            }
+        }
+        return bits;
+    }
+   
 }
