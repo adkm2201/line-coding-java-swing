@@ -11,4 +11,5 @@
         <maven.compiler.target>22</maven.compiler.target>
         <exec.mainClass>com.mycompany.line_coding.Line_Coding</exec.mainClass>
     </properties>
+    <name>LineCoding</name>
 </project>

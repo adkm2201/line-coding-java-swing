@@ -2,15 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com;
+package app;
+
+import controller.SignalController;
 
 /**
  *
  * @author adkm2
  */
-public class Line_Coding {
+public class LineCoding {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        SignalController controller = new SignalController();
+        controller.loadInputForm();
     }
 }
