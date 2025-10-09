@@ -21,7 +21,7 @@ public class  SignalModel {
     
     public List<Boolean> textToBin (String text) {
         
-        Charset cs = StandardCharsets.US_ASCII;
+        Charset cs = StandardCharsets.UTF_8;
         byte[] bytes = text.getBytes(cs);
         List<Boolean> bits = new ArrayList<>(bytes.length*8);
         

@@ -27,7 +27,7 @@ public class InputForm extends javax.swing.JFrame {
         this.setTitle("Line Coding");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,7 +39,6 @@ public class InputForm extends javax.swing.JFrame {
 
         inputLabel = new javax.swing.JLabel();
         titleLabel = new java.awt.Label();
-        inputText = new java.awt.TextField();
         manchesterBtn = new javax.swing.JButton();
         nrzBtn1 = new javax.swing.JButton();
         digitalLabel = new java.awt.Label();
@@ -48,22 +47,17 @@ public class InputForm extends javax.swing.JFrame {
         AmplitudeBtn = new javax.swing.JButton();
         PhaseBtn = new javax.swing.JButton();
         seeBinBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        inputText = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         inputLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        inputLabel.setText("Enter text (ASCII):");
+        inputLabel.setText("Enter text (ASCII/UTF-8):");
 
         titleLabel.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         titleLabel.setName("LINE CODING"); // NOI18N
         titleLabel.setText("LINE CODING");
-
-        inputText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        inputText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputTextActionPerformed(evt);
-            }
-        });
 
         manchesterBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         manchesterBtn.setText("Manchester");
@@ -122,6 +116,15 @@ public class InputForm extends javax.swing.JFrame {
             }
         });
 
+        inputText.setBackground(new java.awt.Color(255, 255, 255));
+        inputText.setColumns(20);
+        inputText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inputText.setForeground(new java.awt.Color(51, 51, 51));
+        inputText.setLineWrap(true);
+        inputText.setRows(5);
+        inputText.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(inputText);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,26 +145,29 @@ public class InputForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PhaseBtn)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(AmplitudeBtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(FrequencyBtn))))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(PhaseBtn)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(AmplitudeBtn)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(FrequencyBtn))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(inputLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(modulationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 78, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(inputLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(modulationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(inputText, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,14 +177,11 @@ public class InputForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(inputLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(inputText, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                        .addGap(14, 14, 14)
-                        .addComponent(digitalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(seeBinBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(digitalLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(seeBinBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nrzBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,7 +194,7 @@ public class InputForm extends javax.swing.JFrame {
                     .addComponent(AmplitudeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PhaseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
@@ -227,10 +230,6 @@ public class InputForm extends javax.swing.JFrame {
         controller.showPhase(controller.signalEncoder(text));
     }//GEN-LAST:event_PhaseBtnActionPerformed
 
-    private void inputTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputTextActionPerformed
-
     private void seeBinBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeBinBtnActionPerformed
         String text = inputText.getText();
         
@@ -256,7 +255,8 @@ public class InputForm extends javax.swing.JFrame {
     private javax.swing.JButton PhaseBtn;
     private java.awt.Label digitalLabel;
     private javax.swing.JLabel inputLabel;
-    private java.awt.TextField inputText;
+    private javax.swing.JTextArea inputText;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton manchesterBtn;
     private java.awt.Label modulationLabel;
     private javax.swing.JButton nrzBtn1;
