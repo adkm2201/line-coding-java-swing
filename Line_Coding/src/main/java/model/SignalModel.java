@@ -23,7 +23,7 @@ public class  SignalModel {
         
         Charset cs = StandardCharsets.UTF_8;
         byte[] bytes = text.getBytes(cs);
-        List<Boolean> bits = new ArrayList<>(bytes.length*8);
+        bits = new ArrayList<>(bytes.length*8);
         
         for (byte b : bytes) {
             for (int i = 7; i >=0; i--) {
@@ -32,5 +32,19 @@ public class  SignalModel {
         }
         return bits;
     }
-   
+       public List<Boolean> getBits() {
+        return bits;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setBits(List<Boolean> bits) {
+        this.bits = bits;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }
